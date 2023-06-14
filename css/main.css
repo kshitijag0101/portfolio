@@ -1096,17 +1096,17 @@ header .row {
 header .top-bar {
 	display: block;
 	background: #000000;
-	min-width: 220px;
+	min-width: 226px;
 	min-height: 66px;
 	position: absolute;
-	left: 90px;
+	right: 5px;
 	top: 0;
 }
 header .logo {
 	float: left;
 	margin-left: 20px;
 	margin-right: 50px;
-	margin-top: 25px;
+	margin-top: 20px;
 	position: relative;
 }
 header .logo a {
@@ -1118,9 +1118,9 @@ header .logo a {
 	text-shadow: none;
 	color: transparent;
 	width: 92px;
-	height: 15px;
+	height: 30px;
 	background: url("../images/logo.png") no-repeat center;
-	background-size: 92px 15px;
+	background-size: 92px 30px;
 }
 
 /**
