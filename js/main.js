@@ -215,6 +215,74 @@
   	/*---------------------------------------------------- */
 	/*	contact form
 	------------------------------------------------------ */
+	  document.addEventListener('DOMContentLoaded', function() {
+  // Get the contact form element
+  var contactForm = document.getElementById('contactForm');
+
+  // Add submit event listener to the form
+  contactForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    // Get the form fields
+    var contactName = document.getElementById('contactName');
+    var contactEmail = document.getElementById('contactEmail');
+    var contactMessage = document.getElementById('contactMessage');
+
+    // Perform validation
+    var isValid = true;
+
+    if (contactName.value.trim() === '') {
+      isValid = false;
+      displayErrorMessage('Please enter your name.');
+    }
+
+    if (contactEmail.value.trim() === '') {
+      isValid = false;
+      displayErrorMessage('Please enter your email address.');
+    } else if (!isValidEmail(contactEmail.value.trim())) {
+      isValid = false;
+      displayErrorMessage('Please enter a valid email address.');
+    }
+
+    if (contactMessage.value.trim() === '') {
+      isValid = false;
+      displayErrorMessage('Please enter a message.');
+    }
+
+    // If form is valid, display success message
+    if (isValid) {
+      displaySuccessMessage();
+      contactForm.reset(); // Reset the form
+    }
+  });
+
+  // Function to display the error message
+  function displayErrorMessage(message) {
+    var messageWarning = document.getElementById('message-warning');
+    messageWarning.innerHTML = message;
+    messageWarning.style.display = 'block';
+
+    var messageSuccess = document.getElementById('message-success');
+    messageSuccess.style.display = 'none';
+  }
+
+  // Function to display the success message
+  function displaySuccessMessage() {
+    var messageSuccess = document.getElementById('message-success');
+    messageSuccess.style.display = 'block';
+
+    var messageWarning = document.getElementById('message-warning');
+    messageWarning.style.display = 'none';
+  }
+
+  // Function to validate email address
+  function isValidEmail(email) {
+    // You can use a regular expression or any other method to validate the email format
+    // Here's a basic example using a regular expression
+    var emailRegex = /^\S+@\S+\.\S+$/;
+    return emailRegex.test(email);
+  }
+});
 
 	/* local validation */
 
