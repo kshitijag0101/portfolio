@@ -2,6 +2,9 @@
 
 // Replace this with your own email address
 $siteOwnersEmail = 'agarwal.kshitij01@gmail.com';
+ini_set("SMTP", "smtp.gmail.com");
+ini_set("smtp_port", "587");
+ini_set("smtp_ssl", "tls");
 
 
 if($_POST) {
@@ -10,6 +13,8 @@ if($_POST) {
    $email = trim(stripslashes($_POST['contactEmail']));
    $subject = trim(stripslashes($_POST['contactSubject']));
    $contact_message = trim(stripslashes($_POST['contactMessage']));
+   $message = "";
+   $error = [];
 
    // Check Name
 	if (strlen($name) < 2) {
@@ -28,11 +33,11 @@ if($_POST) {
 
 
    // Set Message
-   $message .= "Email from: " . $name . "<br />";
+   	$message .= "Email from: " . $name . "<br />";
 	$message .= "Email address: " . $email . "<br />";
-   $message .= "Message: <br />";
-   $message .= $contact_message;
-   $message .= "<br /> ----- <br /> This email was sent from your site's contact form. <br />";
+   	$message .= "Message: <br />";
+   	$message .= $contact_message;
+   	$message .= "<br /> ----- <br /> This email was sent from your site's contact form. <br />";
 
    // Set From: header
    $from =  $name . " <" . $email . ">";
